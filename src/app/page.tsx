@@ -1,5 +1,10 @@
+import { Metadata } from "next";
 import Header from "@/components/Header";
 import PersonCard from "@/components/PersonCard";
+
+export const metadata: Metadata = {
+    title: "Xian Valencia"
+}
 
 export default function Home() {
     return (
