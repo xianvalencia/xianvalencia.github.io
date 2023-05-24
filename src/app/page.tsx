@@ -3,7 +3,7 @@ import PersonCard from "@/components/PersonCard";
 
 export default function Home() {
     return (
-        <div className="min-h-screen grid grid-cols-12">
+        <div className="min-h-screen grid grid-cols-12 content-start">
             <Header
                 logo="naix"
                 menuItems={[
@@ -11,7 +11,7 @@ export default function Home() {
                     {url: 'mailto:xian.valencia@gmail.com', text: 'Contact'},
                 ]}
                 copyright="&copy; 2023 Xian Valencia" />
-            <section className="grid grid-cols-12 lg:grid-cols-9 lg:col-start-4 col-span-full lg:col-span-9 content-start lg:content-center">
+            <section className="min-h-content grid grid-cols-12 lg:grid-cols-9 lg:col-start-4 col-span-full lg:col-span-9 content-center">
                 <PersonCard
                     image={{src: "https://picsum.photos/id/6/320", alt: "Xian Valencia"}}
                     name="Xian Valencia"

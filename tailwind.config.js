@@ -13,6 +13,9 @@ module.exports = {
       'light-gray': '#494b50',
       'dark-gray': '#34353a',
     },
+    minHeight: {
+      content: 'calc(100vh - 3rem)',
+    },
     extend: {
       fontFamily: {
         montserrat: ['var(--font-montserrat)'],
