@@ -1,7 +1,18 @@
-import './globals.css'
-import { Inter } from 'next/font/google'
+import { Montserrat, Mulish } from 'next/font/google'
+import './globals.scss'
 
-const inter = Inter({ subsets: ['latin'] })
+const montserrat = Montserrat({
+  weight: ['400', '500', '800'],
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-montserrat',
+})
+const mulish = Mulish({
+  weight: ['400'],
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-mulish',
+})
 
 export const metadata = {
   title: 'Create Next App',
@@ -14,8 +25,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="en" className={`${montserrat.variable} ${mulish.variable}`}>
+      <body className="bg-slate-700">{children}</body>
     </html>
   )
 }
