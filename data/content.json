@@ -1,0 +1,133 @@
+{
+  "profile": {
+    "name": "Xian Valencia",
+    "handle": "@xianvalencia",
+    "tagline": "Software Engineer x Endurance Athlete",
+    "bio": "I write code by day and chase PRs by dawn. This is where shipping software meets logging miles — race reports, engineering notes, and everything in between.",
+    "location": "Manila, PH",
+    "stats": [
+      { "label": "Years Coding", "value": "8+", "icon": "terminal" },
+      { "label": "KM This Year", "value": "1,204", "icon": "run" },
+      { "label": "Races Finished", "value": "17", "icon": "medal" },
+      { "label": "Deploys Shipped", "value": "∞", "icon": "rocket" }
+    ]
+  },
+  "socials": [
+    {
+      "platform": "strava",
+      "label": "Strava",
+      "url": "https://www.strava.com/athletes/xianvalencia",
+      "color": "#fc4c02"
+    },
+    {
+      "platform": "facebook",
+      "label": "Facebook",
+      "url": "https://www.facebook.com/xianvalencia",
+      "color": "#1877f2"
+    },
+    {
+      "platform": "instagram",
+      "label": "Instagram",
+      "url": "https://www.instagram.com/xianvalencia",
+      "color": "#e4405f"
+    },
+    {
+      "platform": "youtube",
+      "label": "YouTube",
+      "url": "https://www.youtube.com/@xianvalencia",
+      "color": "#ff0000"
+    }
+  ],
+  "posts": [
+    {
+      "slug": "sub-2-half-marathon-training-plan",
+      "title": "Engineering a Sub-2 Half Marathon: My Training Plan as a Sprint Backlog",
+      "date": "2026-06-28",
+      "tags": ["running", "training", "agile"],
+      "excerpt": "I treated my 12-week half marathon block like a product sprint — with velocity charts, retros, and a definition of done. Here's the full breakdown.",
+      "readingTime": "6 min",
+      "cover": "/images/posts/half-marathon.svg",
+      "body": [
+        "Twelve weeks ago I committed to breaking two hours in the half marathon. As an engineer, I couldn't resist structuring the whole thing like a sprint backlog: weekly mileage as story points, long runs as epics, and every tempo session with its own acceptance criteria.",
+        "Week 1–4 was base building — the 'infrastructure sprint'. Nothing glamorous, just easy aerobic miles and strides, the running equivalent of setting up CI/CD before you write features.",
+        "Weeks 5–9 introduced tempo work and intervals. I logged everything to Strava and pulled my splits into a spreadsheet every Sunday for a personal retro: what went well, what hurt, what to adjust.",
+        "Race day: 1:57:42. Definition of done — met. The biggest lesson? Consistency beats intensity, in training blocks and in codebases alike."
+      ],
+      "embeds": [
+        {
+          "type": "strava",
+          "title": "Race Day — Half Marathon PR",
+          "activityId": "1234567890",
+          "embedId": "dummy-strava-embed-1",
+          "stats": { "distance": "21.1 km", "time": "1:57:42", "pace": "5:35 /km", "elevation": "148 m" }
+        }
+      ]
+    },
+    {
+      "slug": "building-a-strava-dashboard-with-nextjs",
+      "title": "Building a Personal Strava Dashboard with Next.js and the Strava API",
+      "date": "2026-06-14",
+      "tags": ["nextjs", "strava-api", "side-project"],
+      "excerpt": "A weekend project: pulling my activities from the Strava API into a Next.js dashboard with charts, heatmaps, and zero backend servers.",
+      "readingTime": "9 min",
+      "cover": "/images/posts/strava-dashboard.svg",
+      "body": [
+        "Every runner-engineer eventually builds a Strava dashboard. It's a rite of passage, like writing your own blog engine (also guilty).",
+        "The stack: Next.js with static generation, the Strava OAuth flow for tokens, and a build-time fetch that turns my last 200 activities into JSON. No servers, no database — the whole thing redeploys nightly via GitHub Actions.",
+        "The most interesting problem was rate limiting. Strava allows 100 requests per 15 minutes, so the fetcher batches endpoints and caches aggressively.",
+        "Full source is on my GitHub. Fork it, plug in your tokens, and you'll have your own dashboard in under an hour."
+      ],
+      "embeds": [
+        {
+          "type": "youtube",
+          "title": "Demo: Strava Dashboard Walkthrough",
+          "videoId": "dQw4w9WgXcQ"
+        }
+      ]
+    },
+    {
+      "slug": "vlog-marathon-training-week-1",
+      "title": "VLOG: Marathon Training, Week 1 — 42km Ahead",
+      "date": "2026-05-30",
+      "tags": ["vlog", "marathon", "youtube"],
+      "excerpt": "First week of the full marathon build is in the books. I vlogged every run — the 5AM alarms, the humidity, and the questionable carb-loading choices.",
+      "readingTime": "3 min",
+      "cover": "/images/posts/vlog-week-1.svg",
+      "body": [
+        "Week one of marathon training, documented on camera. Watch the full vlog below.",
+        "Highlights: a 16km long run in 89% humidity, my first attempt at making my own energy gels (do not recommend), and a cameo from every stray cat on my route.",
+        "Subscribe on YouTube to follow the whole 18-week build."
+      ],
+      "embeds": [
+        {
+          "type": "youtube",
+          "title": "Marathon Training Week 1 Vlog",
+          "videoId": "jNQXAC9IVRw"
+        },
+        {
+          "type": "strava",
+          "title": "Sunday Long Run — 16K",
+          "activityId": "1234567891",
+          "embedId": "dummy-strava-embed-2",
+          "stats": { "distance": "16.0 km", "time": "1:38:11", "pace": "6:08 /km", "elevation": "92 m" }
+        }
+      ]
+    },
+    {
+      "slug": "what-running-taught-me-about-debugging",
+      "title": "What Running Taught Me About Debugging Production Incidents",
+      "date": "2026-05-12",
+      "tags": ["engineering", "running", "career"],
+      "excerpt": "Bonking at kilometer 30 and watching a service melt down at 3AM feel surprisingly similar. Both taught me the same three lessons.",
+      "readingTime": "5 min",
+      "cover": "/images/posts/debugging.svg",
+      "body": [
+        "Lesson one: panic wastes energy. When you bonk mid-race, flailing makes it worse — you slow down, take stock, and refuel. Same with a production incident: the first move is never a frantic redeploy.",
+        "Lesson two: instrument everything. You can't fix what you can't measure. Heart rate zones are just observability for your body.",
+        "Lesson three: recovery is part of the work. Rest days make you faster; blameless postmortems make systems stronger. Skipping either just accrues debt.",
+        "The overlap isn't a coincidence. Both disciplines are about sustained performance under constraints — and respecting the system you're running on."
+      ],
+      "embeds": []
+    }
+  ]
+}
