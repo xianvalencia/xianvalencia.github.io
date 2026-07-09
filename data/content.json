@@ -69,6 +69,35 @@
           "stats": { "distance": "21.19 km", "time": "2:27:34", "pace": "6:58 /km", "calories": "1,828" }
         }
       ]
+    },
+    {
+      "slug": "reverse-laguna-loop",
+      "title": "Unang Reverse Laguna Loop: 175 km the Hard Way",
+      "date": "2026-05-09",
+      "tags": ["cycling", "vlog", "ride-report", "laguna-loop"],
+      "excerpt": "175.28 kilometers of the Laguna Loop — but backwards. Nine hours in the saddle, 1,186 meters of climbing, and the first time I've ever done it in reverse.",
+      "readingTime": "2 min",
+      "cover": "/images/posts/reverse-laguna-loop.svg",
+      "body": [
+        "The Laguna Loop is a well-worn route among cyclists around Metro Manila — a big circle around Laguna de Bay that most people tackle in a set direction. The 'reverse' variant flips the script: same roads, same distance, entirely different challenge profile. Naturally, I decided to attempt mine for the first time ever, on camera.",
+        "175.28 kilometers. 9 hours, 6 minutes, 54 seconds of moving time. That's not a ride, that's a deployment that went sideways and you're stuck watching the build logs scroll by. The average speed held at 19.2 km/h — which sounds respectable until you feel what 170+ km of accumulated fatigue does to your legs in the final stretch.",
+        "The elevation was the real story: 1,186 meters of climbing distributed across the entire route. Not brutal by mountain standards, but compound interest on a very long day in the saddle. By the time the bigger climbs arrived, my legs had already spent hours quietly reconsidering their life choices.",
+        "The full vlog is below — first time bringing a camera on a ride this long, and probably not the last. If you're curious about the Reverse Laguna Loop, it's worth every kilometer. If you're curious why I keep signing up for things that take nine hours, that's a longer conversation."
+      ],
+      "embeds": [
+        {
+          "type": "youtube",
+          "title": "Unang Reverse Laguna Loop",
+          "videoId": "yrNC6JaVxV8"
+        },
+        {
+          "type": "strava",
+          "title": "Laguna Loop… but reverse",
+          "activityId": "18436905248",
+          "embedId": "18436905248",
+          "stats": { "distance": "175.28 km", "time": "9:06:54", "speed": "19.2 km/h", "elevation": "1,186 m" }
+        }
+      ]
     }
   ]
 }
