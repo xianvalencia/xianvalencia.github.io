@@ -127,6 +127,35 @@
           "stats": { "distance": "175.28 km", "time": "9:06:54", "speed": "19.2 km/h", "elevation": "1,186 m" }
         }
       ]
+    },
+    {
+      "slug": "sierra-madre-loop",
+      "title": "Sierra Madre Loop: 121 km, 1,915 m, and Getting Lost in Sta. Maria",
+      "date": "2026-04-17",
+      "tags": ["cycling", "vlog", "ride-report", "sierra-madre"],
+      "excerpt": "121.51 km through the Sierra Madre range — plus an unplanned detour through Sta. Maria, Laguna. 1,915 meters of climbing and 3,414 calories that didn't ask permission.",
+      "readingTime": "2 min",
+      "cover": "/images/posts/sierra-madre-loop.svg",
+      "body": [
+        "The Sierra Madre Loop is one of those routes that looks reasonable on paper until the elevation profile renders and you remember that mountains don't care about your training plan. 121.51 km around the Sierra Madre range, with 1,915 meters of climbing baked in — the kind of ride where every smooth descent is just the road gathering its thoughts before the next wall.",
+        "The 'x Lost in Sta. Maria, Laguna' in the activity name tells the rest of the story. At some point mid-ride, the route and I had a disagreement. The route won. An unplanned detour through Sta. Maria added distance, added elevation, and added a very specific kind of mental load — the debugging session where you're not sure which road is the right exit and your legs have already spent hours voting to stop.",
+        "Final numbers: 6:31:12 of moving time, 18.6 km/h average, 3,414 calories. The elevation made the average speed an honest reflection of the terrain — this wasn't a flat spin, it was a negotiation.",
+        "Vlog on Facebook below, Strava data attached."
+      ],
+      "embeds": [
+        {
+          "type": "facebook",
+          "title": "Sierra Madre Loop x Lost in Sta. Maria, Laguna",
+          "url": "https://www.facebook.com/watch/?v=35160667453549203"
+        },
+        {
+          "type": "strava",
+          "title": "Sierra Madre Loop x Lost in Sta. Maria, Laguna",
+          "activityId": "18152969595",
+          "embedId": "18152969595",
+          "stats": { "distance": "121.51 km", "time": "6:31:12", "speed": "18.6 km/h", "elevation": "1,915 m", "calories": "3,414" }
+        }
+      ]
     }
   ]
 }

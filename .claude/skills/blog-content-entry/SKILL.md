@@ -90,74 +90,29 @@ Identify the platform from the URL, then:
        → format as `"X.X km/h"`
      - Include **calories** if present in the response.
 
-- **Facebook**: use the Facebook Graph API with a user access token. Follow
-  these steps exactly:
+- **Facebook**: attempt the Graph API with the app token, fall back to asking
+  the user. Follow these steps exactly:
 
-  1. Read credentials from the project's `.env` file:
-     `FACEBOOK_APP_ID`, `FACEBOOK_APP_SECRET`, `FACEBOOK_ACCESS_TOKEN`.
-
-  2. **If `FACEBOOK_ACCESS_TOKEN` is missing from `.env`**, a one-time OAuth
-     setup is required. Tell the user to complete these steps, then re-run:
-
-     a. Open this URL in a browser (replace values):
-        ```
-        https://www.facebook.com/v21.0/dialog/oauth
-          ?client_id=<FACEBOOK_APP_ID>
-          &redirect_uri=https://localhost
-          &scope=user_videos
-          &response_type=code
-        ```
-     b. Authorize the app. The browser will redirect to
-        `https://localhost?code=<auth_code>` — copy the auth_code value.
-     c. Exchange the code for a short-lived token:
-        ```bash
-        curl -s "https://graph.facebook.com/v21.0/oauth/access_token\
-?client_id=<FACEBOOK_APP_ID>\
-&redirect_uri=https://localhost\
-&client_secret=<FACEBOOK_APP_SECRET>\
-&code=<auth_code>"
-        ```
-     d. Exchange that for a long-lived token (valid ~60 days):
-        ```bash
-        curl -s "https://graph.facebook.com/v21.0/oauth/access_token\
-?grant_type=fb_exchange_token\
-&client_id=<FACEBOOK_APP_ID>\
-&client_secret=<FACEBOOK_APP_SECRET>\
-&fb_exchange_token=<short_lived_token>"
-        ```
-     e. Write the `access_token` from the response to `.env` as
-        `FACEBOOK_ACCESS_TOKEN=<value>`.
-
-  3. **Refresh the token** every time it is used (resets the ~60-day clock):
-     ```bash
-     curl -s "https://graph.facebook.com/v21.0/oauth/access_token\
-?grant_type=fb_exchange_token\
-&client_id=$FACEBOOK_APP_ID\
-&client_secret=$FACEBOOK_APP_SECRET\
-&fb_exchange_token=$FACEBOOK_ACCESS_TOKEN"
-     ```
-     Write the new `access_token` value back to `.env` as
-     `FACEBOOK_ACCESS_TOKEN`.
-
-  4. If the URL is a short share link (`facebook.com/share/v/...`), follow
-     the redirect to get the canonical URL and extract the numeric video/reel ID:
+  1. Read `FACEBOOK_APP_ID` and `FACEBOOK_APP_SECRET` from the project's `.env`.
+  2. If the URL is a short share link (`facebook.com/share/v/...`), follow
+     the redirect to extract the canonical video/reel ID:
      ```bash
      curl -sI -L "<share_url>" | grep -i "location:" | tail -1
      ```
-     The canonical URL will be in the form
-     `facebook.com/reel/<id>/` or `facebook.com/<user>/videos/<id>/`.
-     Parse the numeric ID from whichever pattern matches.
-
-  5. Fetch video details using the user access token:
+     The canonical URL will be in the form `facebook.com/reel/<id>/` or
+     `facebook.com/<user>/videos/<id>/`. Parse the numeric ID.
+     For direct URLs (`facebook.com/reel/<id>` or `facebook.com/watch/?v=<id>`),
+     extract the ID directly.
+  3. Try fetching video details with the app token:
      ```bash
      curl -s "https://graph.facebook.com/v21.0/<video_id>\
-?fields=title,description,created_time&access_token=$FACEBOOK_ACCESS_TOKEN"
+?fields=title,description,created_time&access_token=<FACEBOOK_APP_ID>|<FACEBOOK_APP_SECRET>"
      ```
-
-  6. Extract `title`, `description` (use as caption/body source), and
-     `created_time` (use as post date unless user says otherwise).
-     If the API still returns a permissions error, fall back to asking the
-     user to paste the caption.
+  4. If the API returns a permissions error (personal profile reels and videos
+     are not accessible via app token — Meta's `user_videos` permission requires
+     formal app review and is unavailable for standard apps), **ask the user to
+     paste the caption**. Note why the API couldn't fetch it so they understand
+     it's a platform limitation, not a bug.
 
 - **Instagram**: use the Instagram Basic Display API via Facebook credentials.
   Follow these steps exactly:
@@ -294,10 +249,11 @@ blog project. Match the blog's existing covers:
 
 ## Step 5 — Append to content.json
 
-1. Read `data/content.json`, prepend the new entry to the **front** of the
-   `posts` array (newest first), and write it back. Preserve the existing
-   structure and formatting (2-space indent); touch nothing outside `posts`.
-   If an entry with the same slug already exists, ask before overwriting.
+1. Read `data/content.json`, add the new entry to the `posts` array, then
+   sort the entire array by `date` descending (newest first) before writing
+   it back. Preserve the existing structure and formatting (2-space indent);
+   touch nothing outside `posts`. If an entry with the same slug already
+   exists, ask before overwriting.
 2. Validate: run `node -e "JSON.parse(require('fs').readFileSync('data/content.json'))"`
    (or equivalent) to confirm the file is still valid JSON. If the project's
    dependencies are installed, optionally offer a `next build` check.
