@@ -5,7 +5,7 @@ export default function Footer() {
     <footer className="site-footer">
       <div className="container inner">
         <span>
-          © {new Date().getFullYear()} Xian Rex Valencia — built with Next.js, fueled by carbs
+          © {new Date().getFullYear()} Xian Valencia — built with Next.js, fueled by carbs
         </span>
         <SocialLinks />
       </div>

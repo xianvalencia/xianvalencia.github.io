@@ -8,7 +8,7 @@ export const metadata = {
     template: '%s · Xian Valencia',
   },
   description:
-    'Personal blog of Xian Rex Valencia — software engineering, running, and everything in between.',
+    'Personal blog of Xian Valencia — software engineering, running, and everything in between.',
 };
 
 export default function RootLayout({ children }) {
