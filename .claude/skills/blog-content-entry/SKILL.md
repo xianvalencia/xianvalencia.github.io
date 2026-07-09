@@ -35,15 +35,52 @@ Identify the platform from the URL, then:
   for `title` and `author_name`; also fetch the video page and read the
   `og:description` meta tag for the description. Extract the video ID from the
   URL (`v=` param, `youtu.be/<id>`, or `/shorts/<id>`).
-- **Strava**: fetch the activity page and read `og:title` / `og:description`
-  (contains distance, time, pace when public). Extract the activity ID from
-  `strava.com/activities/<id>`.
+
+- **Strava**: use the Strava API (not the public webpage) to get full activity
+  data. Follow these steps exactly:
+
+  1. Extract the activity ID from `strava.com/activities/<id>`.
+  2. Read credentials from the project's `.env` file:
+     ```bash
+     grep STRAVA_ /path/to/project/.env
+     ```
+     You need: `STRAVA_REFRESH_TOKEN`, `STRAVA_CLIENT_ID`, `STRAVA_CLIENT_SECRET`.
+  3. Exchange the refresh token for a fresh access token — do this every time,
+     do not rely on any stored access token:
+     ```bash
+     curl -s -X POST https://www.strava.com/oauth/token \
+       -d "client_id=$STRAVA_CLIENT_ID" \
+       -d "client_secret=$STRAVA_CLIENT_SECRET" \
+       -d "grant_type=refresh_token" \
+       -d "refresh_token=$STRAVA_REFRESH_TOKEN"
+     ```
+     Parse `access_token` and `refresh_token` from the response. Write the new
+     `STRAVA_REFRESH_TOKEN` value back into `.env` (Strava rotates it on each
+     use). Do not write `access_token` to `.env` — it is ephemeral and used
+     only for the next step.
+  4. Fetch the activity using the fresh access token:
+     ```bash
+     curl -s -H "Authorization: Bearer <fresh_access_token>" \
+       "https://www.strava.com/api/v3/activities/<id>"
+     ```
+  5. Parse the JSON response. Extract and convert:
+     - **name** → activity title
+     - **start_date** → `YYYY-MM-DD` (use as post date unless user says otherwise)
+     - **sport_type** → e.g. `"Run"`, `"Ride"` (determines pace vs. speed)
+     - **distance** (meters) → km: `round(distance / 1000, 2)` → `"X.XX km"`
+     - **moving_time** (seconds) → `HH:MM:SS`
+     - **total_elevation_gain** (meters) → `"X m"`
+     - For **runs** — compute pace: `moving_time / (distance / 1000)` seconds/km
+       → format as `"M:SS /km"`
+     - For **rides** — compute avg speed: `(distance / moving_time) * 3.6`
+       → format as `"X.X km/h"`
+     - Include **calories** if present in the response.
+
 - **Instagram / Facebook**: fetch the page and try `og:title` / `og:description`.
   These platforms usually block anonymous fetches — if nothing useful comes
   back, ask the user to paste the caption instead of guessing.
 
-If any fetch fails or returns a login wall, ask the user for the caption and
-(for Strava) the activity stats. Never invent stats.
+If any fetch fails, ask the user for the missing data. Never invent stats.
 
 ## Step 2 — Build the entry
 
@@ -54,7 +91,7 @@ Follow this schema exactly (it must match the existing objects in
 {
   "slug": "kebab-case-from-title",
   "title": "Post title",
-  "date": "YYYY-MM-DD (today, unless the user says otherwise)",
+  "date": "YYYY-MM-DD (from API for Strava; today otherwise)",
   "tags": ["three-to-four", "lowercase-kebab", "tags"],
   "excerpt": "1–2 sentence hook.",
   "readingTime": "N min",
@@ -77,31 +114,29 @@ Field rules:
 - **body** — expand the caption into 3–4 blog-style paragraphs (each one array
   element) in the site's voice: first-person, warm, wry humor that maps
   running onto engineering (sprints, deploys, postmortems, uptime) without
-  overdoing the metaphor. The caption's facts are the source of truth — expand
-  tone and context, never fabricate events, numbers, or results.
+  overdoing the metaphor. The API data's facts are the source of truth —
+  expand tone and context, never fabricate events, numbers, or results.
 - **readingTime** — total body word count ÷ 200 wpm, rounded up, min 1 →
   `"N min"`.
 
 ## Step 3 — Embed object
 
-Add exactly one embed for the source URL, by platform:
+Add exactly one embed per source URL, by platform:
 
 ```json
 { "type": "youtube", "title": "...", "videoId": "<id>" }
 
 { "type": "strava", "title": "...", "activityId": "<id>",
-  "embedId": "pending",
-  "stats": { "distance": "…", "time": "…", "pace": "…", "elevation": "…" } }
+  "embedId": "<id>",
+  "stats": { "distance": "…", "time": "…", "pace": "… /km", "elevation": "… m" } }
 
 { "type": "instagram", "title": "...", "url": "<original URL>" }
 
 { "type": "facebook", "title": "...", "url": "<original URL>" }
 ```
 
-Strava stats come from the fetched og:description or from the user — omit any
-stat you don't actually have. For instagram/facebook, remind the user that
-`components/Embed.jsx` only renders `youtube` and `strava` today, and offer to
-add the missing cases to the component.
+For Strava, populate all `stats` fields from the API response — no placeholders.
+Use `"pace"` key for runs and `"speed"` key for rides.
 
 ## Step 4 — Cover image (themed SVG)
 
