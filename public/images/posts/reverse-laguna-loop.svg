@@ -7,7 +7,7 @@
   <text x="450" y="147" font-family="monospace" font-size="11" fill="#ff6b35" text-anchor="middle">↑ 1,186 m</text>
   <text x="30" y="45" font-family="monospace" font-size="13" fill="#7d8fa3">$ ride --route laguna-loop --reverse · 2026-05-09</text>
   <text x="30" y="82" font-family="monospace" font-size="28" fill="#d8e2ec">175.28 km</text>
-  <text x="30" y="117" font-family="monospace" font-size="16" fill="#fc4c02">9:06:54 · avg 19.2 km/h</text>
+  <text x="30" y="117" font-family="monospace" font-size="16" fill="#ff6b35">9:06:54 · avg 19.2 km/h</text>
   <text x="30" y="335" font-family="monospace" font-size="11" fill="#7d8fa3">0 km</text>
   <text x="610" y="335" font-family="monospace" font-size="11" fill="#7d8fa3" text-anchor="end">175 km</text>
 </svg>
