@@ -7,8 +7,8 @@
     "location": "Antipolo, Rizal, PH",
     "stats": [
       { "label": "Years Coding", "value": "15+", "icon": "terminal" },
-      { "label": "KMs This Year", "value": "922.75", "icon": "run" },
-      { "label": "Races Finished", "value": "12", "icon": "medal" },
+      { "label": "Runs This Year", "value": "0kms", "icon": "run" },
+      { "label": "Rides This Year", "value": "0kms", "icon": "bike" },
       { "label": "Deploys Shipped", "value": "∞", "icon": "rocket" }
     ]
   },
