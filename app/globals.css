@@ -268,7 +268,6 @@ a:hover { text-decoration: underline; }
 }
 
 .embed-frame iframe { display: block; width: 100%; aspect-ratio: 16 / 9; border: 0; }
-.embed-frame--portrait iframe { aspect-ratio: 9 / 16; }
 
 .embed-title {
   font-family: var(--mono);

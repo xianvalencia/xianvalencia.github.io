@@ -1,5 +1,7 @@
+import FacebookEmbed from './FacebookEmbed';
+
 // Renders a social embed from the JSON `embeds` array by type.
-// Add new embed types (instagram, facebook, tiktok…) as new cases here.
+// Add new embed types (instagram, tiktok…) as new cases here.
 export default function Embed({ embed }) {
   switch (embed.type) {
     case 'youtube':
@@ -49,26 +51,13 @@ export default function Embed({ embed }) {
         </figure>
       );
 
-    case 'facebook': {
-      const isPost = embed.url.includes('/posts/');
-      const fbSrc = isPost
-        ? `https://www.facebook.com/plugins/post.php?href=${encodeURIComponent(embed.url)}&show_text=true&width=640`
-        : `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(embed.url)}&show_text=0&width=640`;
+    case 'facebook':
       return (
         <figure className="embed">
           <figcaption className="embed-title">{embed.title}</figcaption>
-          <div className="embed-frame embed-frame--portrait">
-            <iframe
-              src={fbSrc}
-              title={embed.title}
-              allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-              allowFullScreen
-              loading="lazy"
-            />
-          </div>
+          <FacebookEmbed url={embed.url} />
         </figure>
       );
-    }
 
     default:
       return null;
