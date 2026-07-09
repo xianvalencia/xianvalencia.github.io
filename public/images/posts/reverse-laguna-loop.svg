@@ -1,13 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360">
   <rect width="640" height="360" fill="#10161d"/>
   <polygon points="30,310 110,285 190,265 280,220 370,235 450,175 530,205 610,265 610,310" fill="#151d26"/>
-  <polyline points="30,310 110,285 190,265 280,220 370,235 450,175 530,205 610,265" fill="none" stroke="#00ff88" stroke-width="2.5" stroke-linejoin="round"/>
-  <circle cx="450" cy="175" r="4" fill="#ff6b35"/>
-  <line x1="450" y1="175" x2="450" y2="152" stroke="#ff6b35" stroke-width="1" stroke-dasharray="3 2"/>
-  <text x="450" y="147" font-family="monospace" font-size="11" fill="#ff6b35" text-anchor="middle">↑ 1,186 m</text>
+  <polyline points="30,310 110,285 190,265 280,220 370,235 450,175 530,205 610,265" fill="none" stroke="#69be28" stroke-width="2.5" stroke-linejoin="round"/>
+  <circle cx="450" cy="175" r="4" fill="#2887be"/>
+  <line x1="450" y1="175" x2="450" y2="152" stroke="#2887be" stroke-width="1" stroke-dasharray="3 2"/>
+  <text x="450" y="147" font-family="monospace" font-size="11" fill="#2887be" text-anchor="middle">↑ 1,186 m</text>
   <text x="30" y="45" font-family="monospace" font-size="13" fill="#7d8fa3">$ ride --route laguna-loop --reverse · 2026-05-09</text>
   <text x="30" y="82" font-family="monospace" font-size="28" fill="#d8e2ec">175.28 km</text>
-  <text x="30" y="117" font-family="monospace" font-size="16" fill="#ff6b35">9:06:54 · avg 19.2 km/h</text>
+  <text x="30" y="117" font-family="monospace" font-size="16" fill="#2887be">9:06:54 · avg 19.2 km/h</text>
   <text x="30" y="335" font-family="monospace" font-size="11" fill="#7d8fa3">0 km</text>
   <text x="610" y="335" font-family="monospace" font-size="11" fill="#7d8fa3" text-anchor="end">175 km</text>
 </svg>

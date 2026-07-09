@@ -6,7 +6,7 @@
     "bio": "I write code by day, log miles by dawn, and spin cranks on weekends. This is where shipping software meets chasing PRs and KOMs — race reports, ride logs, engineering notes, and everything in between.",
     "location": "Antipolo, Rizal, PH",
     "stats": [
-      { "label": "Years Coding", "value": "15+", "icon": "terminal" },
+      { "label": "Years Coding", "value": "0+", "icon": "terminal" },
       { "label": "Runs This Year", "value": "0kms", "icon": "run" },
       { "label": "Rides This Year", "value": "0kms", "icon": "bike" },
       { "label": "Deploys Shipped", "value": "∞", "icon": "rocket" }

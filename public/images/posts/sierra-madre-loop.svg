@@ -1,13 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360">
   <rect width="640" height="360" fill="#10161d"/>
   <polygon points="30,300 90,280 150,240 200,200 250,220 300,160 350,180 400,130 450,160 500,200 560,240 610,270 610,300" fill="#151d26"/>
-  <polyline points="30,300 90,280 150,240 200,200 250,220 300,160 350,180 400,130 450,160 500,200 560,240 610,270" fill="none" stroke="#00ff88" stroke-width="2.5" stroke-linejoin="round"/>
-  <circle cx="400" cy="130" r="4" fill="#ff6b35"/>
-  <line x1="400" y1="130" x2="400" y2="108" stroke="#ff6b35" stroke-width="1" stroke-dasharray="3 2"/>
-  <text x="400" y="103" font-family="monospace" font-size="11" fill="#ff6b35" text-anchor="middle">↑ 1,915 m</text>
+  <polyline points="30,300 90,280 150,240 200,200 250,220 300,160 350,180 400,130 450,160 500,200 560,240 610,270" fill="none" stroke="#69be28" stroke-width="2.5" stroke-linejoin="round"/>
+  <circle cx="400" cy="130" r="4" fill="#2887be"/>
+  <line x1="400" y1="130" x2="400" y2="108" stroke="#2887be" stroke-width="1" stroke-dasharray="3 2"/>
+  <text x="400" y="103" font-family="monospace" font-size="11" fill="#2887be" text-anchor="middle">↑ 1,915 m</text>
   <text x="30" y="46" font-family="monospace" font-size="13" fill="#7d8fa3">$ ride --route sierra-madre-loop · 2026-04-17</text>
   <text x="30" y="83" font-family="monospace" font-size="28" fill="#d8e2ec">121.51 km</text>
-  <text x="30" y="118" font-family="monospace" font-size="16" fill="#ff6b35">6:31:12 · avg 18.6 km/h</text>
+  <text x="30" y="118" font-family="monospace" font-size="16" fill="#2887be">6:31:12 · avg 18.6 km/h</text>
   <text x="30" y="335" font-family="monospace" font-size="11" fill="#7d8fa3">0 km</text>
   <text x="610" y="335" font-family="monospace" font-size="11" fill="#7d8fa3" text-anchor="end">121 km</text>
 </svg>
