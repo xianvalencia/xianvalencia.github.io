@@ -49,13 +49,17 @@ export default function Embed({ embed }) {
         </figure>
       );
 
-    case 'facebook':
+    case 'facebook': {
+      const isPost = embed.url.includes('/posts/');
+      const fbSrc = isPost
+        ? `https://www.facebook.com/plugins/post.php?href=${encodeURIComponent(embed.url)}&show_text=true&width=640`
+        : `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(embed.url)}&show_text=0&width=640`;
       return (
         <figure className="embed">
           <figcaption className="embed-title">{embed.title}</figcaption>
           <div className="embed-frame">
             <iframe
-              src={`https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(embed.url)}&show_text=0&width=640`}
+              src={fbSrc}
               title={embed.title}
               allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
               allowFullScreen
@@ -64,6 +68,7 @@ export default function Embed({ embed }) {
           </div>
         </figure>
       );
+    }
 
     default:
       return null;

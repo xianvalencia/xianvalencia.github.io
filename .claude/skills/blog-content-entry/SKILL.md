@@ -198,8 +198,13 @@ Follow this schema exactly (it must match the existing objects in
 
 Field rules:
 
-- **title** — derive from the fetched title/caption; punch it up to fit the
-  blog's fitness × software-engineering voice. Not clickbait.
+- **title** — derive from the fetched title/caption and reframe it as a
+  software engineering pun or metaphor. The pun should feel natural, not
+  forced — map a real detail from the activity or event onto a coding concept.
+  Good sources: error codes (404, 500, NullPointer), git commands, deployment
+  terms (push to production, merge, rollback), runtime concepts (infinite loop,
+  stack overflow, recursion), debugging metaphors, CLI commands. The activity
+  facts come first; the pun frames them. Not clickbait.
 - **slug** — kebab-case of the title, short, no stop-word soup.
 - **tags** — 3–4 lowercase kebab-case tags inferred from the content
   (e.g. `running`, `nextjs`, `vlog`, `marathon`, `strava-api`). Reuse tags
