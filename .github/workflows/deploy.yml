@@ -25,6 +25,10 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build # static export → ./out
+        env:
+          STRAVA_CLIENT_ID: ${{ secrets.STRAVA_CLIENT_ID }}
+          STRAVA_CLIENT_SECRET: ${{ secrets.STRAVA_CLIENT_SECRET }}
+          STRAVA_REFRESH_TOKEN: ${{ secrets.STRAVA_REFRESH_TOKEN }}
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./out
