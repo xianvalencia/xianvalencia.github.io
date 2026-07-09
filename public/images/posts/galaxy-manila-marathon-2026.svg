@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360">
+  <rect width="640" height="360" fill="#10161d"/>
+  <polygon points="30,285 160,283 280,281 400,284 520,279 610,282 610,310 30,310" fill="#151d26"/>
+  <polyline points="30,285 160,283 280,281 400,284 520,279 610,282" fill="none" stroke="#00ff88" stroke-width="2.5" stroke-linejoin="round"/>
+  <circle cx="610" cy="282" r="4" fill="#ff6b35"/>
+  <line x1="610" y1="282" x2="610" y2="262" stroke="#ff6b35" stroke-width="1" stroke-dasharray="3 2"/>
+  <text x="610" y="257" font-family="monospace" font-size="10" fill="#ff6b35" text-anchor="middle">FINISH</text>
+  <text x="30" y="48" font-family="monospace" font-size="13" fill="#7d8fa3">$ race --event galaxy-manila-marathon --dist 21k</text>
+  <text x="30" y="85" font-family="monospace" font-size="28" fill="#d8e2ec">21.11 km</text>
+  <text x="30" y="120" font-family="monospace" font-size="16" fill="#fc4c02">2:19:21 · 6:36 /km avg</text>
+  <text x="30" y="150" font-family="monospace" font-size="13" fill="#7d8fa3">↑ 24 m · 2026-06-13 · Manila</text>
+  <text x="30" y="335" font-family="monospace" font-size="11" fill="#7d8fa3">elevation: nearly flat ——————————————— 21 km</text>
+</svg>

@@ -71,6 +71,35 @@
       ]
     },
     {
+      "slug": "galaxy-manila-marathon-2026",
+      "title": "Galaxy Manila Marathon 2026: 21.11 km Pushed to Production",
+      "date": "2026-06-13",
+      "tags": ["running", "race-report", "marathon", "vlog"],
+      "excerpt": "Galaxy Manila Marathon 2026, half marathon leg — 21.11 km in 2:19:21 at 6:36/km. Flat course, Manila roads, city still half-asleep at gun start.",
+      "readingTime": "2 min",
+      "cover": "/images/posts/galaxy-manila-marathon-2026.svg",
+      "body": [
+        "Galaxy Manila Marathon is one of the bigger events on the Metro Manila race calendar — well-organized, well-attended, and a solid benchmark for where your fitness sits mid-year. I lined up for the half marathon leg: 21.11 kilometers of nearly flat city tarmac.",
+        "Flat is fast in theory. In practice, 24 meters of total elevation and Metro Manila's road surfaces are a different kind of test — concrete that doesn't give, turns that break your rhythm, and heat that shows up even at a pre-dawn gun start. Crossed the line in 2:19:21, 6:36/km average. A clean finish.",
+        "This race came mid-year in a block that's been split between the saddle and the road. Getting back under race conditions was a useful recalibration — a reminder that 21K at threshold pace demands respect, whether you've been logging running miles or cycling kilometers. The legs remembered what to do.",
+        "Vlog is on Facebook below, Strava data attached. Filed under: shipped."
+      ],
+      "embeds": [
+        {
+          "type": "facebook",
+          "title": "Galaxy Manila Marathon 2026 Vlog",
+          "url": "https://www.facebook.com/share/v/1CkLEZYmNM/"
+        },
+        {
+          "type": "strava",
+          "title": "Galaxy Manila Marathon 2026",
+          "activityId": "18896709206",
+          "embedId": "18896709206",
+          "stats": { "distance": "21.11 km", "time": "2:19:21", "pace": "6:36 /km", "elevation": "24 m" }
+        }
+      ]
+    },
+    {
       "slug": "reverse-laguna-loop",
       "title": "Unang Reverse Laguna Loop: 175 km the Hard Way",
       "date": "2026-05-09",

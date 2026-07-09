@@ -49,6 +49,22 @@ export default function Embed({ embed }) {
         </figure>
       );
 
+    case 'facebook':
+      return (
+        <figure className="embed">
+          <figcaption className="embed-title">{embed.title}</figcaption>
+          <div className="embed-frame">
+            <iframe
+              src={`https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(embed.url)}&show_text=0&width=640`}
+              title={embed.title}
+              allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+              allowFullScreen
+              loading="lazy"
+            />
+          </div>
+        </figure>
+      );
+
     default:
       return null;
   }
