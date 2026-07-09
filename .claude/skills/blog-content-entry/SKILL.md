@@ -31,10 +31,24 @@ Facebook (post/video). If no URL was given, ask for one.
 
 Identify the platform from the URL, then:
 
-- **YouTube**: fetch `https://www.youtube.com/oembed?url=<URL>&format=json`
-  for `title` and `author_name`; also fetch the video page and read the
-  `og:description` meta tag for the description. Extract the video ID from the
-  URL (`v=` param, `youtu.be/<id>`, or `/shorts/<id>`).
+- **YouTube**: use the YouTube Data API v3 to retrieve full video metadata.
+  Follow these steps exactly:
+
+  1. Extract the video ID from the URL:
+     - `youtube.com/watch?v=<id>` → use `v=` param
+     - `youtu.be/<id>` → path segment after the domain
+     - `youtube.com/shorts/<id>` → path segment after `/shorts/`
+  2. Read `YOUTUBE_API_KEY` from the project's `.env` file.
+  3. Fetch video details:
+     ```bash
+     curl -s "https://www.googleapis.com/youtube/v3/videos\
+?id=<video_id>&key=$YOUTUBE_API_KEY&part=snippet"
+     ```
+  4. Parse `items[0].snippet` from the response. Extract:
+     - `title` → video title
+     - `description` → full video description (use as body source)
+     - `publishedAt` → post date (`YYYY-MM-DD`, strip the time component)
+     - `tags` → array of hashtags (use to help pick blog tags)
 
 - **Strava**: use the Strava API (not the public webpage) to get full activity
   data. Follow these steps exactly:
@@ -76,9 +90,135 @@ Identify the platform from the URL, then:
        → format as `"X.X km/h"`
      - Include **calories** if present in the response.
 
-- **Instagram / Facebook**: fetch the page and try `og:title` / `og:description`.
-  These platforms usually block anonymous fetches — if nothing useful comes
-  back, ask the user to paste the caption instead of guessing.
+- **Facebook**: use the Facebook Graph API with a user access token. Follow
+  these steps exactly:
+
+  1. Read credentials from the project's `.env` file:
+     `FACEBOOK_APP_ID`, `FACEBOOK_APP_SECRET`, `FACEBOOK_ACCESS_TOKEN`.
+
+  2. **If `FACEBOOK_ACCESS_TOKEN` is missing from `.env`**, a one-time OAuth
+     setup is required. Tell the user to complete these steps, then re-run:
+
+     a. Open this URL in a browser (replace values):
+        ```
+        https://www.facebook.com/v21.0/dialog/oauth
+          ?client_id=<FACEBOOK_APP_ID>
+          &redirect_uri=https://localhost
+          &scope=user_videos
+          &response_type=code
+        ```
+     b. Authorize the app. The browser will redirect to
+        `https://localhost?code=<auth_code>` — copy the auth_code value.
+     c. Exchange the code for a short-lived token:
+        ```bash
+        curl -s "https://graph.facebook.com/v21.0/oauth/access_token\
+?client_id=<FACEBOOK_APP_ID>\
+&redirect_uri=https://localhost\
+&client_secret=<FACEBOOK_APP_SECRET>\
+&code=<auth_code>"
+        ```
+     d. Exchange that for a long-lived token (valid ~60 days):
+        ```bash
+        curl -s "https://graph.facebook.com/v21.0/oauth/access_token\
+?grant_type=fb_exchange_token\
+&client_id=<FACEBOOK_APP_ID>\
+&client_secret=<FACEBOOK_APP_SECRET>\
+&fb_exchange_token=<short_lived_token>"
+        ```
+     e. Write the `access_token` from the response to `.env` as
+        `FACEBOOK_ACCESS_TOKEN=<value>`.
+
+  3. **Refresh the token** every time it is used (resets the ~60-day clock):
+     ```bash
+     curl -s "https://graph.facebook.com/v21.0/oauth/access_token\
+?grant_type=fb_exchange_token\
+&client_id=$FACEBOOK_APP_ID\
+&client_secret=$FACEBOOK_APP_SECRET\
+&fb_exchange_token=$FACEBOOK_ACCESS_TOKEN"
+     ```
+     Write the new `access_token` value back to `.env` as
+     `FACEBOOK_ACCESS_TOKEN`.
+
+  4. If the URL is a short share link (`facebook.com/share/v/...`), follow
+     the redirect to get the canonical URL and extract the numeric video/reel ID:
+     ```bash
+     curl -sI -L "<share_url>" | grep -i "location:" | tail -1
+     ```
+     The canonical URL will be in the form
+     `facebook.com/reel/<id>/` or `facebook.com/<user>/videos/<id>/`.
+     Parse the numeric ID from whichever pattern matches.
+
+  5. Fetch video details using the user access token:
+     ```bash
+     curl -s "https://graph.facebook.com/v21.0/<video_id>\
+?fields=title,description,created_time&access_token=$FACEBOOK_ACCESS_TOKEN"
+     ```
+
+  6. Extract `title`, `description` (use as caption/body source), and
+     `created_time` (use as post date unless user says otherwise).
+     If the API still returns a permissions error, fall back to asking the
+     user to paste the caption.
+
+- **Instagram**: use the Instagram Basic Display API via Facebook credentials.
+  Follow these steps exactly:
+
+  1. Read credentials from the project's `.env` file:
+     `FACEBOOK_APP_ID`, `FACEBOOK_APP_SECRET`, `INSTAGRAM_ACCESS_TOKEN`.
+
+  2. **If `INSTAGRAM_ACCESS_TOKEN` is missing from `.env`**, a one-time OAuth
+     setup is required. Tell the user to complete these steps, then re-run:
+
+     a. Open this URL in a browser (replace values):
+        ```
+        https://api.instagram.com/oauth/authorize
+          ?client_id=<FACEBOOK_APP_ID>
+          &redirect_uri=https://localhost
+          &scope=user_profile,user_media
+          &response_type=code
+        ```
+     b. Authorize the app. The browser will redirect to
+        `https://localhost?code=<auth_code>#_` — copy everything between
+        `code=` and `#_`.
+     c. Exchange the code for a short-lived token:
+        ```bash
+        curl -X POST https://api.instagram.com/oauth/access_token \
+          -F "client_id=<FACEBOOK_APP_ID>" \
+          -F "client_secret=<FACEBOOK_APP_SECRET>" \
+          -F "grant_type=authorization_code" \
+          -F "redirect_uri=https://localhost" \
+          -F "code=<auth_code>"
+        ```
+     d. Exchange that for a long-lived token (valid 60 days):
+        ```bash
+        curl -s "https://graph.instagram.com/access_token\
+?grant_type=ig_exchange_token\
+&client_id=<FACEBOOK_APP_ID>\
+&client_secret=<FACEBOOK_APP_SECRET>\
+&access_token=<short_lived_token>"
+        ```
+     e. Write the `access_token` from the response to `.env` as
+        `INSTAGRAM_ACCESS_TOKEN=<value>`.
+
+  3. **Refresh the token** every time it is used (resets the 60-day clock):
+     ```bash
+     curl -s "https://graph.instagram.com/refresh_access_token\
+?grant_type=ig_refresh_token&access_token=$INSTAGRAM_ACCESS_TOKEN"
+     ```
+     Write the new `access_token` value back to `.env` as
+     `INSTAGRAM_ACCESS_TOKEN`.
+
+  4. List the user's recent media to find the matching post:
+     ```bash
+     curl -s "https://graph.instagram.com/v21.0/me/media\
+?fields=id,caption,media_type,timestamp,permalink\
+&access_token=$INSTAGRAM_ACCESS_TOKEN"
+     ```
+     Match the result whose `permalink` contains the shortcode from the
+     given Instagram URL. If not found in the first page, follow the
+     `paging.next` cursor and repeat until found or exhausted.
+
+  5. Extract `caption` (use as body source), `timestamp` (use as post date),
+     and `media_type` (`IMAGE`, `VIDEO`, `CAROUSEL_ALBUM`, `REELS`).
 
 If any fetch fails, ask the user for the missing data. Never invent stats.
 
