@@ -241,7 +241,7 @@ a:hover { text-decoration: underline; }
   font-family: var(--mono);
   font-size: 0.68rem;
   color: var(--accent);
-  border: 1px solid rgba(0, 255, 136, 0.3);
+  border: 1px solid rgb(from var(--accent) r g b / 0.3);
   border-radius: 99px;
   padding: 0.1rem 0.55rem;
 }
