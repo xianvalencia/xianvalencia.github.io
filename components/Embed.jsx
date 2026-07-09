@@ -57,7 +57,7 @@ export default function Embed({ embed }) {
       return (
         <figure className="embed">
           <figcaption className="embed-title">{embed.title}</figcaption>
-          <div className="embed-frame">
+          <div className="embed-frame embed-frame--portrait">
             <iframe
               src={fbSrc}
               title={embed.title}
