@@ -5,9 +5,9 @@ import { useEffect, useState } from 'react';
 
 const PHRASES = [
   'git push && go run',
-  'while(alive) { code(); train(); }',
-  'pace: 5:35/km · uptime: 99.9%',
-  'deploying miles to production',
+  'while(alive) { code(); run(); ride(); }',
+  'pace: 5:35/km · cadence: 90rpm',
+  'deploying miles and watts to production',
 ];
 
 export default function TypeWriter() {
