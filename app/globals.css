@@ -309,6 +309,9 @@ a:hover { text-decoration: underline; }
 .strava-stats .value { font-family: var(--mono); font-size: 1.15rem; font-weight: 700; }
 .strava-stats .label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-dim); }
 
+.instagram-embed { display: flex; justify-content: center; }
+.instagram-embed iframe { border-radius: 12px; }
+
 /* ---------- Scroll reveal ---------- */
 .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
 .reveal.visible { opacity: 1; transform: none; }

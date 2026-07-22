@@ -1,4 +1,5 @@
 import FacebookEmbed from './FacebookEmbed';
+import InstagramEmbed from './InstagramEmbed';
 
 // Renders a social embed from the JSON `embeds` array by type.
 // Add new embed types (instagram, tiktok…) as new cases here.
@@ -56,6 +57,16 @@ export default function Embed({ embed }) {
         <figure className="embed">
           <figcaption className="embed-title">{embed.title}</figcaption>
           <FacebookEmbed url={embed.url} />
+        </figure>
+      );
+
+    case 'instagram':
+      return (
+        <figure className="embed">
+          <figcaption className="embed-title">{embed.title}</figcaption>
+          <div className="instagram-embed">
+            <InstagramEmbed url={embed.url} />
+          </div>
         </figure>
       );
 
