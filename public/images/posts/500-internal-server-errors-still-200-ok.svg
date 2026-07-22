@@ -7,7 +7,7 @@
   <text x="30" y="152" font-family="monospace" font-size="13" fill="#69be28">[200] finish_line reached</text>
   <line x1="30" y1="174" x2="610" y2="174" stroke="#223040" stroke-width="1"/>
   <text x="30" y="222" font-family="monospace" font-size="30" fill="#d8e2ec">21.10 km</text>
-  <text x="30" y="252" font-family="monospace" font-size="16" fill="#2887be">2:40:56 · 7:37 /km avg</text>
-  <text x="30" y="300" font-family="monospace" font-size="13" fill="#7d8fa3">uptime: 1 year · v2.0 release</text>
+  <text x="30" y="252" font-family="monospace" font-size="16" fill="#2887be">2:40:56 &#183; 7:37 /km avg</text>
+  <text x="30" y="300" font-family="monospace" font-size="13" fill="#7d8fa3">uptime: 1 year &#183; v2.0 release</text>
   <text x="610" y="335" font-family="monospace" font-size="11" fill="#7d8fa3" text-anchor="end">2026-07-19</text>
 </svg>

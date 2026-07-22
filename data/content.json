@@ -74,37 +74,6 @@
       ]
     },
     {
-      "slug": "sante-barley-trilogy-run-leg-2-half-marathon",
-      "title": "404 Shoes Not Found: Racing Trilogy Run Leg 2 with a 360 Camera",
-      "date": "2026-07-09",
-      "tags": ["running", "race-report", "vlog"],
-      "excerpt": "Three days before race day, my Adidas Evo SL got stolen. So naturally, I strapped on a DJI Osmo 360 and vlogged my first half marathon attempt of the year anyway.",
-      "readingTime": "4 min",
-      "cover": "/images/posts/trilogy-run-leg-2.svg",
-      "body": [
-        "Some race weeks write themselves. This one wrote a soap opera. Three days before the Santé Barley Trilogy Run Asia Manila Leg 2, my trusted Adidas Evo SL got stolen. Gone. The shoes I'd been saving for a PR attempt, vanished. I didn't lace up again until the starting line itself.",
-        "Some context: after running the 16K at Leg 1 two months ago, I fell down the cycling rabbit hole (blame the Giant Revolt 0). Running took a backseat until about two weeks before race day, when I locked back in and trained hard for this 21K. I truly believed a PR was coming. Then the shoe thing happened, and mentally I just wasn't all there anymore.",
-        "So I did the only logical thing: I made race day harder by strapping on a DJI Osmo 360 and vlogging a half marathon for the first time. 3:09 AM gun start in Pasay, 26°C feeling like 28°C, 91% humidity — the Manila classic.",
-        "The Puma Deviate Nitro 3 stepped up as the understudy. The first 15K actually felt controlled — hovering in the 6:30–7:00 range while juggling a camera. Then kilometers 16 to 18 collected their tax: 7:49, 7:59, and a humbling 8:30. Still had enough for a 5:05/km kick in the final stretch, because ego is a renewable resource.",
-        "Final line: 21.19 km in 2:27:34, 6:58/km average, 1,828 calories torched. Missed my PR by 2 minutes — on a week where I lost my shoes, my momentum, and occasionally my breath to a vlog monologue. I'll take it. Maybe that says something too.",
-        "Full video below — first attempt at run-vlogging, so expect shaky horizons and heavy breathing. Next stop: Galaxy Manila Marathon Half Marathon, part of the full marathon training block. 🔥"
-      ],
-      "embeds": [
-        {
-          "type": "youtube",
-          "title": "I Tried Vlogging a Half Marathon for the First Time",
-          "videoId": "pBNYH11taO8"
-        },
-        {
-          "type": "strava",
-          "title": "Santé Barley Trilogy Run Asia Manila Leg 2",
-          "activityId": "18534852781",
-          "embedId": "18534852781",
-          "stats": { "distance": "21.19 km", "time": "2:27:34", "pace": "6:58 /km", "calories": "1,828" }
-        }
-      ]
-    },
-    {
       "slug": "galaxy-manila-marathon-2026",
       "title": "Galaxy Manila 2026: git push origin/finish-line",
       "date": "2026-06-13",
@@ -130,6 +99,37 @@
           "activityId": "18896709206",
           "embedId": "18896709206",
           "stats": { "distance": "21.11 km", "time": "2:19:21", "pace": "6:36 /km", "elevation": "24 m" }
+        }
+      ]
+    },
+    {
+      "slug": "sante-barley-trilogy-run-leg-2-half-marathon",
+      "title": "404 Shoes Not Found: Racing Trilogy Run Leg 2 with a 360 Camera",
+      "date": "2026-05-17",
+      "tags": ["running", "race-report", "vlog"],
+      "excerpt": "Three days before race day, my Adidas Evo SL got stolen. So naturally, I strapped on a DJI Osmo 360 and vlogged my first half marathon attempt of the year anyway.",
+      "readingTime": "4 min",
+      "cover": "/images/posts/trilogy-run-leg-2.svg",
+      "body": [
+        "Some race weeks write themselves. This one wrote a soap opera. Three days before the Santé Barley Trilogy Run Asia Manila Leg 2, my trusted Adidas Evo SL got stolen. Gone. The shoes I'd been saving for a PR attempt, vanished. I didn't lace up again until the starting line itself.",
+        "Some context: after running the 16K at Leg 1 two months ago, I fell down the cycling rabbit hole (blame the Giant Revolt 0). Running took a backseat until about two weeks before race day, when I locked back in and trained hard for this 21K. I truly believed a PR was coming. Then the shoe thing happened, and mentally I just wasn't all there anymore.",
+        "So I did the only logical thing: I made race day harder by strapping on a DJI Osmo 360 and vlogging a half marathon for the first time. 3:09 AM gun start in Pasay, 26°C feeling like 28°C, 91% humidity — the Manila classic.",
+        "The Puma Deviate Nitro 3 stepped up as the understudy. The first 15K actually felt controlled — hovering in the 6:30–7:00 range while juggling a camera. Then kilometers 16 to 18 collected their tax: 7:49, 7:59, and a humbling 8:30. Still had enough for a 5:05/km kick in the final stretch, because ego is a renewable resource.",
+        "Final line: 21.19 km in 2:27:34, 6:58/km average, 1,828 calories torched. Missed my PR by 2 minutes — on a week where I lost my shoes, my momentum, and occasionally my breath to a vlog monologue. I'll take it. Maybe that says something too.",
+        "Full video below — first attempt at run-vlogging, so expect shaky horizons and heavy breathing. Next stop: Galaxy Manila Marathon Half Marathon, part of the full marathon training block. 🔥"
+      ],
+      "embeds": [
+        {
+          "type": "youtube",
+          "title": "I Tried Vlogging a Half Marathon for the First Time",
+          "videoId": "pBNYH11taO8"
+        },
+        {
+          "type": "strava",
+          "title": "Santé Barley Trilogy Run Asia Manila Leg 2",
+          "activityId": "18534852781",
+          "embedId": "18534852781",
+          "stats": { "distance": "21.19 km", "time": "2:27:34", "pace": "6:58 /km", "calories": "1,828" }
         }
       ]
     },
@@ -165,7 +165,7 @@
     {
       "slug": "sierra-madre-loop",
       "title": "Sierra Madre Loop: 121 km, 1,915 m, and an Infinite Loop in Sta. Maria",
-      "date": "2026-04-17",
+      "date": "2026-04-18",
       "tags": ["cycling", "vlog", "ride-report", "sierra-madre"],
       "excerpt": "121.51 km through the Sierra Madre range — plus an unplanned detour through Sta. Maria, Laguna. 1,915 meters of climbing and 3,414 calories that didn't ask permission.",
       "readingTime": "2 min",

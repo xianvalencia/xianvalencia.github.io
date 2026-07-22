@@ -79,7 +79,11 @@ Identify the platform from the URL, then:
      ```
   5. Parse the JSON response. Extract and convert:
      - **name** → activity title
-     - **start_date** → `YYYY-MM-DD` (use as post date unless user says otherwise)
+     - **start_date_local** → `YYYY-MM-DD` (strip the time component). This is
+       the **event date** — the calendar day the race/ride actually happened
+       in the athlete's local timezone. Use `start_date_local`, not the UTC
+       `start_date`, since a late-night/early-morning gun start can land on a
+       different UTC day than the local race day.
      - **sport_type** → e.g. `"Run"`, `"Ride"` (determines pace vs. speed)
      - **distance** (meters) → km: `round(distance / 1000, 2)` → `"X.XX km"`
      - **moving_time** (seconds) → `HH:MM:SS`
@@ -177,6 +181,14 @@ Identify the platform from the URL, then:
 
 If any fetch fails, ask the user for the missing data. Never invent stats.
 
+**Multi-source date precedence**: a post may combine a Strava activity with a
+recap video/photo (YouTube, Instagram, Facebook) published days or weeks
+later. The `date` field must always represent the **event date** — when the
+underlying race/ride happened — never the recap's publish date. When a
+Strava embed is present, its `start_date_local` always wins as the `date`,
+regardless of how much later the video/post went up. Only fall back to the
+video/post's own timestamp when there is no Strava embed at all.
+
 ## Step 2 — Build the entry
 
 Follow this schema exactly (it must match the existing objects in
@@ -186,7 +198,7 @@ Follow this schema exactly (it must match the existing objects in
 {
   "slug": "kebab-case-from-title",
   "title": "Post title",
-  "date": "YYYY-MM-DD (from API for Strava; today otherwise)",
+  "date": "YYYY-MM-DD (event date — see Multi-source date precedence)",
   "tags": ["three-to-four", "lowercase-kebab", "tags"],
   "excerpt": "1–2 sentence hook.",
   "readingTime": "N min",
@@ -205,6 +217,9 @@ Field rules:
   terms (push to production, merge, rollback), runtime concepts (infinite loop,
   stack overflow, recursion), debugging metaphors, CLI commands. The activity
   facts come first; the pun frames them. Not clickbait.
+- **date** — the event date (`YYYY-MM-DD`), per the Multi-source date
+  precedence rule above: Strava `start_date_local` if a Strava embed exists,
+  otherwise the source post/video's own publish timestamp, otherwise today.
 - **slug** — kebab-case of the title, short, no stop-word soup.
 - **tags** — 3–4 lowercase kebab-case tags inferred from the content
   (e.g. `running`, `nextjs`, `vlog`, `marathon`, `strava-api`). Reuse tags
@@ -255,10 +270,10 @@ blog project. Match the blog's existing covers:
 ## Step 5 — Append to content.json
 
 1. Read `data/content.json`, add the new entry to the `posts` array, then
-   sort the entire array by `date` descending (newest first) before writing
-   it back. Preserve the existing structure and formatting (2-space indent);
-   touch nothing outside `posts`. If an entry with the same slug already
-   exists, ask before overwriting.
+   sort the entire array by `date` (the event date) descending (newest first)
+   before writing it back. Preserve the existing structure and formatting
+   (2-space indent); touch nothing outside `posts`. If an entry with the same
+   slug already exists, ask before overwriting.
 2. Validate: run `node -e "JSON.parse(require('fs').readFileSync('data/content.json'))"`
    (or equivalent) to confirm the file is still valid JSON. If the project's
    dependencies are installed, optionally offer a `next build` check.
