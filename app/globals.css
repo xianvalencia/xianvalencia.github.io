@@ -190,11 +190,17 @@ a:hover { text-decoration: underline; }
 .post-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-auto-rows: 1fr;
   gap: 1.4rem;
   padding-bottom: 3rem;
 }
 
+/* The Reveal wrapper sits between the grid and the card, so it needs to
+   pass the grid's stretched row height down to the card explicitly. */
+.post-grid > .reveal { height: 100%; }
+
 .post-card {
+  height: 100%;
   display: flex;
   flex-direction: column;
   background: var(--surface);
@@ -210,7 +216,7 @@ a:hover { text-decoration: underline; }
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
 }
 
-.post-card a { color: inherit; }
+.post-card a { display: flex; flex-direction: column; height: 100%; color: inherit; }
 .post-card a:hover { text-decoration: none; }
 
 .post-card .cover {
