@@ -40,6 +40,40 @@
   ],
   "posts": [
     {
+      "slug": "500-internal-server-errors-still-200-ok",
+      "title": "500 Internal Server Errors, Still Returned 200 OK",
+      "date": "2026-07-19",
+      "tags": ["running", "race-report", "half-marathon", "anniversary"],
+      "excerpt": "My slowest half marathon yet — a side stitch, a rolled ankle, and muscle cramps threw errors all night, but I still crossed the finish line. One year into this running thing, and the build's far from stable, but it ships.",
+      "readingTime": "2 min",
+      "cover": "/images/posts/500-internal-server-errors-still-200-ok.svg",
+      "body": [
+        "The Hoka Midnight Run Asia 2026 half marathon kicks off at the stroke of midnight — gun start, 21.1 kilometers, Manila still catching its breath from the day's heat. I lined up for the half expecting a clean, uneventful build: warm up, hold pace, deploy.",
+        "It didn't go that way. A side stitch showed up early, a rolled ankle followed, and muscle cramps closed things out — three separate runtime exceptions thrown mid-execution, with preparation, planning, and execution all falling short on this particular run. 21.10 km, 2:40:56, 7:37/km average, 29 meters of climbing, 1,656 calories burned. My slowest half marathon to date, full stop. But the process didn't crash — it just ran degraded, logged every error, and still returned a finish line.",
+        "The timing wasn't a coincidence: this race landed exactly one year after my first-ever run. Version 1.0, if we're being honest, was rough — 4.95 km at 9:35/km, and even then I could only actually run half of it before walking the rest. The whole thing started as a quick weight-loss plan ahead of my sister's wedding, nothing more ambitious than that. A year and 15 kilos later, v2.0 ships a full 21.10 km at 7:37/km. Feature-complete, sure. Stable release? Debatable, given tonight's stack trace of injuries.",
+        "But that's the honest changelog of any long-running project — progress isn't a straight line, and some builds ship with known issues. Not every race is going to be a personal best, and I've stopped expecting that. What matters more these days is staying healthy and logging more good years with my family. Happy first running anniversary to me: still shipping, still debugging, still here."
+      ],
+      "embeds": [
+        {
+          "type": "instagram",
+          "title": "Slowest Half Marathon, Still Finished",
+          "url": "https://www.instagram.com/p/Da9fGFsRjok/"
+        },
+        {
+          "type": "instagram",
+          "title": "One Year Later: 2025 vs 2026",
+          "url": "https://www.instagram.com/p/Da_rtO5zoph/"
+        },
+        {
+          "type": "strava",
+          "title": "Hoka Midnight Run Asia 2026",
+          "activityId": "19367173943",
+          "embedId": "19367173943",
+          "stats": { "distance": "21.10 km", "time": "2:40:56", "pace": "7:37 /km", "elevation": "29 m", "calories": "1,656" }
+        }
+      ]
+    },
+    {
       "slug": "sante-barley-trilogy-run-leg-2-half-marathon",
       "title": "404 Shoes Not Found: Racing Trilogy Run Leg 2 with a 360 Camera",
       "date": "2026-07-09",
